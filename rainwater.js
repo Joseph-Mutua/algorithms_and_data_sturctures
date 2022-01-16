@@ -10,8 +10,8 @@ const getTrappedRainWater2 = (nums) => {
   for (let p = 0; p < nums.length; p++) {
     let leftP = p,
       rightP = p,
-      maxLeft = 0;
-    maxRight = 0;
+      maxLeft = 0,
+      maxRight = 0;
 
     while (leftP >= 0) {
       maxLeft = Math.max(maxLeft, nums[leftP]);
@@ -33,4 +33,41 @@ const getTrappedRainWater2 = (nums) => {
   return totalWater;
 };
 
-console.log(getTrappedRainWater2(numsArray));
+// Optimized Solution
+
+// 1. Identify the pointer with the lesser value
+// 2. Ask, is this pointer value lesser than or equal to the max on that side:
+// If yes, update the max on that side
+// If No, get the water for the pointer value, add to the TOTAL
+
+// Move the pointer inwards
+// Repeat for the other pointer
+
+const getTrappedRainWater3 = (nums) => {
+  let left = 0,
+    right = nums.length - 1,
+    maxLeft = 0,
+    maxRight = 0,
+    total = 0;
+
+  while (left < right) {
+    if (nums[left] <= nums[right]) {
+      if (nums[left] >= maxLeft) {
+        maxLeft = nums[left];
+      } else {
+        total += maxLeft - nums[left];
+      }
+      left++;
+    }
+
+    if (nums[right] >= maxRight) {
+      maxRight = nums[right];
+    } else {
+      total += maxRight - nums[right];
+    }
+    right--;
+  }
+  return total;
+};
+
+console.log(getTrappedRainWater3(numsArray));
