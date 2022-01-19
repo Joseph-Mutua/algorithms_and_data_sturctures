@@ -24,4 +24,29 @@ const getLongestSubstring = (str) => {
   return longest;
 };
 
-console.log(getLongestSubstring("aaadcrfgsbaddtgyhuiewr"));
+// SLIDING WINDOW
+const getLongestSubstring1 = (str) => {
+  if (str.length <= 1) return str.length;
+
+  const seenChar = {};
+
+  let left = 0;
+  longest = 0;
+
+  for (let right = 0; right < str.length; right++) {
+    const currentChar = str[right];
+    const prevSeenChar = seenChar[currentChar];
+
+    if (prevSeenChar >= left) {
+      left = prevSeenChar + 1;
+    }
+    seenChar[currentChar] = right;
+    longest = Math.max(longest, right - left + 1);
+  }
+  return longest
+};
+
+// Form a window over some portion of sequential data, then
+// move that window throughout the data to capture different parts of it
+
+console.log(getLongestSubstring1("aaadcrfgsbaddtgyhuiewr"));
