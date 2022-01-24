@@ -1,3 +1,12 @@
+// Linked list time
+// Prepend - O(1)
+// Append - O(1)
+// Lookup - O(N)
+// Insert - O(N)
+
+
+
+
 // Iterating through a linked list
 const linkedList = (head) => {
   let currentNode = head;

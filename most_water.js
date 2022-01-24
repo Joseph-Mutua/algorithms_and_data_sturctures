@@ -1,3 +1,10 @@
+// /array big - o
+// Lookup - 0(1)
+// Push O(1)
+// Insert O(n)
+// Delete O(n) 
+
+
 // You are given an array of positive integers where each
 // integer represents the height of a vertical line on a chart
 // Find two lines which together with the x-axis forms a
