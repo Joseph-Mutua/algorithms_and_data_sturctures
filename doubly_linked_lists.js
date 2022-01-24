@@ -12,6 +12,7 @@
 // list of thir own and so on. Return the list as a single level of
 // a flattened doubly linked list
 
+
 const flattenLinkedList = () => {
   if (!head) return head;
 

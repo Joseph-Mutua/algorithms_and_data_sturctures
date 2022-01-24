@@ -23,6 +23,7 @@ const mostWaterContainer1 = (nums) => {
 };
 
 // Optimized solution for Time
+
 const mostWaterContainer2 = (nums) => {
   let p1 = 0,
     p2 = nums.length - 1,
