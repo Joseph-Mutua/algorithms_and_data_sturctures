@@ -1,6 +1,19 @@
 // Given a string containing only parentheses, determine
 // if it is valid. The string is valid if all parentheses close
 
+// Big O for Stacks (LIFO)
+// Lookup O(n)
+// Pop O(1)
+// Push O(1)
+// Peek O(1)
+
+
+// Big O for Stacks (FIFO)
+// Lookup O(n)
+// Enqueue O(1)
+// Dequeue O(1)
+// Peek O(1)
+
 const parens = {
   "(": ")",
   "[": "]",

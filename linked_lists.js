@@ -4,6 +4,17 @@
 // Lookup - O(N)
 // Insert - O(N)
 
+// Pros vs cons
+// PROS
+// Fast insertion
+// Fast deletion
+// Ordere
+// flexible Size
+
+// CONS
+// Slow lookup
+// Moore memory
+
 
 
 
