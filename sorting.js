@@ -86,15 +86,32 @@ function mergeSort(array) {
   const left = array.slice(0, middle);
   const right = array.slice(middle);
 
-  console.log;
-
   return merge(mergeSort(left), mergeSort(right));
 }
 
+// function merge(left, right) {
+//   const result = [];
+//   let leftIndex = 0;
+//   let rightIndex = 0;
+//   while (leftIndex < left.length && rightIndex < right.length) {
+//     if (left[leftIndex] < right[rightIndex]) {
+//       result.push(left[leftIndex]);
+//       leftIndex++;
+//     } else {
+//       result.push(right[rightIndex]);
+//       rightIndex++;
+//     }
+//   }
+//   console.log(left, right);
+
+//   return result.concat(left.slice(leftIndex).concat(right.slice(rightIndex)));
+// }
+
 function merge(left, right) {
-  const result = [];
+  let result = [];
   let leftIndex = 0;
   let rightIndex = 0;
+
   while (leftIndex < left.length && rightIndex < right.length) {
     if (left[leftIndex] < right[rightIndex]) {
       result.push(left[leftIndex]);
@@ -104,12 +121,45 @@ function merge(left, right) {
       rightIndex++;
     }
   }
-  console.log(left, right);
 
-  return result.concat(left.slice(leftIndex).concat(right.slice(rightIndex)));
+  //   At this point either left or right is empty
+
+  while (leftIndex < left.length) {
+    result.push(left[leftIndex]);
+    leftIndex++;
+  }
+
+  while (rightIndex < right.length) {
+    result.push(right[rightIndex]);
+
+    rightIndex++;
+  }
+
+  return result;
 }
 
+let mergeResult = mergeSort(numbers);
+console.log(mergeResult);
+
+
+
 // Quick Sort
+// Start with a PIVOT --> The pivot should be in the right position in the final sorted array
+//                    --> Items to the left are smaller, items to the right are larger
+// STEPS
+// 1. Choose the pivot, then move it to the end of the array
+// 2. Look for 2 items: --> itemfromLeft that is larger than the pivot
+// 3.                   --> itmeFromRight that is smaller than pivot
+// 4. Swap itemFromLeft with itemFromRight and repeat the process
+// 5. Stop when index of itemFromLeft > index of itemFromRight, then swap pivot with itemFromLeft
+// 6. The pivot is now in it's correct position
+
+// 7. Now split the array at the pivot and repeat the process recursively then join
+
+// HOW TO CHOOSE PIVOT
+// 1. middle of three: Choose first, middle and end items, then sort them and pick the middle one
+
+
 let items = [5, 3, 7, 6, 2, 9];
 
 function swap(items, leftIndex, rightIndex) {
@@ -153,5 +203,5 @@ function quickSort(items, left, right) {
   return items;
 }
 // first call to quick sort
-let sortedArray = quickSort(items, 0, items.length - 1);
-console.log(sortedArray); //prints [2,3,5,6,7,9]
+// let sortedArray = quickSort(items, 0, items.length - 1);
+// console.log(sortedArray); //prints [2,3,5,6,7,9]
