@@ -141,8 +141,6 @@ function merge(left, right) {
 let mergeResult = mergeSort(numbers);
 console.log(mergeResult);
 
-
-
 // Quick Sort
 // Start with a PIVOT --> The pivot should be in the right position in the final sorted array
 //                    --> Items to the left are smaller, items to the right are larger
@@ -159,49 +157,28 @@ console.log(mergeResult);
 // HOW TO CHOOSE PIVOT
 // 1. middle of three: Choose first, middle and end items, then sort them and pick the middle one
 
-
-let items = [5, 3, 7, 6, 2, 9];
-
-function swap(items, leftIndex, rightIndex) {
-  let temp = items[leftIndex];
-  items[leftIndex] = items[rightIndex];
-  items[rightIndex] = temp;
-}
-function partition(items, left, right) {
-  let pivot = items[Math.floor((right + left) / 2)], //middle element
-    i = left, //left pointer
-    j = right; //right pointer
-  while (i <= j) {
-    while (items[i] < pivot) {
-      i++;
-    }
-    while (items[j] > pivot) {
-      j--;
-    }
-    if (i <= j) {
-      swap(items, i, j); //sawpping two elements
-      i++;
-      j--;
-    }
+function quicksort(array, k) {
+  if (array.length <= 1) {
+    return array;
   }
-  return i;
+
+  let pivot = array[0];
+
+  let left = [];
+  let right = [];
+
+  for (let i = 1; i < array.length; i++) {
+    array[i] < pivot ? left.push(array[i]) : right.push(array[i]);
+  }
+
+  return quicksort(left).concat(pivot, quicksort(right));
 }
 
-function quickSort(items, left, right) {
-  let index;
-  if (items.length > 1) {
-    index = partition(items, left, right); //index returned from partition
-    if (left < index - 1) {
-      //more elements on the left side of the pivot
-      quickSort(items, left, index - 1);
-    }
-    if (index < right) {
-      //more elements on the right side of the pivot
-      quickSort(items, index, right);
-    }
-  }
-  return items;
-}
-// first call to quick sort
-// let sortedArray = quickSort(items, 0, items.length - 1);
-// console.log(sortedArray); //prints [2,3,5,6,7,9]
+
+
+
+
+// let unsorted = [23, 45, 16, 37, 3, 99, 22];
+// let sorted = quicksort(numbers);
+
+// console.log("Sorted array", sorted);
