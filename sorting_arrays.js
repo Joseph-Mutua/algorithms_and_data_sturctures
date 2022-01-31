@@ -172,14 +172,15 @@ const searchRange = (nums, target) => {
     startPos = binarySearch2(nums, 0, startPos - 1, target);
   }
   startPos = temp1;
+
   while (endPos !== -1) {
     temp2 = endPos;
     endPos = binarySearch2(nums, endPos + 1, nums.length - 1, target);
   }
   endPos = temp2;
+
   return [startPos, endPos];
 };
 
-
-let nums =[1,2,3,3,5,5,5,5,8,9,9]
-quickSearch(nums, 2)
+let nums = [1, 2, 3, 3, 5, 5, 5, 5, 8, 9, 9];
+quickSearch(nums, 2);
