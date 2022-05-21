@@ -32,12 +32,6 @@
 
 
 
-
-
-
-
-
-
 const mergeMeetings = (meetings) => {
   // Make deep clone
   const meetingsCopy = JSON.parse(JSON.stringify(meetings));
