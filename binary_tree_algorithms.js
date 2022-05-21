@@ -108,7 +108,6 @@ const rightSideView = (root) => {
   return result;
 };
 
-
 const dfs = (node, currentLevel, result) => {
   if (!node) return;
 
@@ -123,4 +122,68 @@ const dfs = (node, currentLevel, result) => {
   if (node.left) {
     dfs(node.left, currentLevel + 1, result);
   }
+};
+
+// FULL and COMPLETE BINARY TREES
+
+// 1. FULL TREE         --> Every tree node has either 2 or zero children.
+// 2. COMPLETE TREE     --> One where each level is completely full, except possibly the last
+//                          is completely filled, and all nodes are as far left as posible
+// 3. FULL AND COMPLETE --> Every level is filled with children (Both full and complete)
+
+// Given a complete binary tree, count the number of nodes
+
+const countNodes = (root) => {
+  if (!root) return 0;
+
+  const height = getTreeHeight(root);
+
+  if (height === 0) return 1;
+
+  const upperCount = Math.pow(2, height) - 1;
+
+  let left = 0,
+    right = upperCount;
+
+  while (left < right) {
+    let indexToFind = Math.ceil((left + right) / 2);
+    if (nodeExists(indexToFind, height, root)) {
+      left = indexToFind;
+    } else {
+      right = indexToFind - 1;
+    }
+  }
+
+  return upperCount + left + 1;
+};
+
+const getTreeHeight = (root) => {
+  let height = 0;
+
+  while (root.left !== null) {
+    height++;
+    root = root.left;
+  }
+  return height;
+};
+
+const nodeExists = (indexToFind, height, node) => {
+  let left = 0,
+    right = Math.pow(2, height) - 1,
+    count = 0;
+
+  while (count < height) {
+    let midOfNode = Math.ceil((left + right) / 2);
+
+    if (indexToFind >= midOfNode) {
+      node = node.right;
+      left = midOfNode;
+    } else {
+      node = node.left;
+      right = midOfNode - 1;
+    }
+    count++;
+  }
+
+  return node !== null;
 };
