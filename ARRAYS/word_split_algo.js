@@ -67,4 +67,5 @@ function ArrayChallenge(strArr) {
 // if(joinedWord === wordToCompare || reversedWord === wordToCompare).
 
 // 8) If these 2 conjoined words are equal to our first string, baseball, or if reversed they're equal, we 
-// then have our answer that we concatenate and return outside of all the loops by assigning it to the emprty answerWords variable we created at the start.
+// then have our answer that we concatenate and return outside of all the loops by assigning it to the emprty 
+//answerWords variable we created at the start.
